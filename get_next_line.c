@@ -12,43 +12,64 @@
 
 #include "get_next_line.h"
 
-char	*ft_reader(int fd, char *buff)
+static char	*ft_reader(int fd, char *buff)    // burada sıkıntı yok doğru okuyor
 {
-	char	*tempo;
-	int		sgnal;
+	int sgnal;
+	char *temp;
 
+	temp = calloc(BUFFER_SIZE + 1, sizeof(char));	
 	sgnal = 1;
-	tempo = calloc(BUFFER_SIZE + 1, 1);
 	while (sgnal != 0 && !ft_strchr(buff, '\n'))
 	{
-		sgnal = read(fd, tempo, BUFFER_SIZE);
-		tempo[sgnal] = '\0';
-		buff = ft_strjoin(buff, tempo);
+		sgnal = read(fd, temp, BUFFER_SIZE);
+		temp[sgnal] = '\0';
+		buff = ft_strjoin(buff,temp);
 	}
-	free(tempo);
+	free(temp);
 	return (buff);
 }
 
-char	*ft_line(char *buff)
+static char	*ft_line(char *buff)
 {
-	int	i;
-
+	char *theline;
+	int i;
+	
 	i = 0;
 	while (buff[i] != '\n' && buff[i])
 		i++;
-	buff[i] = '\0';
-	return (buff);
+	theline = calloc(i + 1 , 1);
+	i = 0;
+	while (buff[i] != '\n' && buff[i])
+	{
+		theline[i] = buff[i];
+		i++;
+	}
+	theline[i] = '\n';
+	return (theline);
+}
+
+static char *ft_gonext(char *buff)
+{
+	int i  =-1 ;
+	char * next;
+
+	next  = ft_strchr(buff, '\n');
+	//buff++;
+	next  = calloc(ft_strlen(buff)+1,1);
+	while (buff[++i])
+		next[i] = buff[i];
+	return (next);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*buff;
-	char		*newline;
-
-	buff = calloc(1, 1);
-	buff = ft_reader(fd, buff);
-	newline = ft_line(buff);
-	return (newline);
+	static char *buff;
+	char *myline;
+	buff = calloc(1,1);
+	buff = ft_reader(fd,buff);
+	myline = ft_line(buff);
+	buff = ft_gonext(buff);
+	return (myline);
 }
 
 // static char

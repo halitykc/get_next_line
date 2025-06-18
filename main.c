@@ -7,9 +7,5 @@ int	main(void)
 
 	printf("%s", get_next_line(a));
 	printf("%s", get_next_line(a));
-	printf("%s", get_next_line(a));
-	printf("%s", get_next_line(a));
-	printf("%s", get_next_line(a));
-	printf("%s", get_next_line(a));
-	printf("%s", get_next_line(a));
+
 }

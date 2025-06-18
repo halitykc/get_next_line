@@ -57,7 +57,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	int		s1len;
 	int		s2len;
 	char	*p;
-
+	
 	s1len = ft_strlen(s1);
 	s2len = ft_strlen(s2);
 	p = malloc(s1len + s2len + 1);
