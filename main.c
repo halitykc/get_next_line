@@ -19,12 +19,8 @@ int	main(void)
 	sa = get_next_line(a);
 	printf("-%s",sa);
 	free(sa);
-	sa = get_next_line(a);
-	printf("-%s",sa);
-	free(sa);
-	sa = get_next_line(a);
-	printf("-%s",sa);
-	free(sa);
 
 
-}//git@github.com:keyiflerolsun/get_next_line.git
+
+
+}

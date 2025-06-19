@@ -25,13 +25,8 @@ static char	*ft_reader(int fd, char *buff)    // burada sıkıntı yok doğru ok
 		sgnal = read(fd, temp, BUFFER_SIZE);
 		if (sgnal == -1)
 			return (free(temp),free(buff),NULL);
-
-		if (sgnal == 0)
-			break;
-		
 		temp[sgnal] = '\0';
 		//printf("temp suan == %s\n",temp);
-
 		oldbuff = buff;
 		buff = ft_strjoin(buff,temp);
 		free(oldbuff);
@@ -67,23 +62,22 @@ static char *ft_gonext(char *buff)
 {
 	int i  = 0;
 	char * next;
-	char *bj;
+	char *oldbuf;
 
-	bj = buff;
+	oldbuf = buff;
 	buff  = ft_strchr(buff, '\n');
 	if (!buff)
-		return (free(bj),NULL);
+		return (free(oldbuf),NULL);
 	buff++;
 	next  = calloc(ft_strlen(buff) + 1, 1);
 	if (!next)
-		return (free(bj),NULL);
-	
+		return (free(oldbuf),NULL);
 	while (buff[i])
 	{
 		next[i] = buff[i];
 		i++;
 	}
-	free(bj);
+	free(oldbuf);
 	return (next);
 }
 
