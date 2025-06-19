@@ -23,7 +23,15 @@ static char	*ft_reader(int fd, char *buff)    // burada sıkıntı yok doğru ok
 	while (sgnal != 0 && !ft_strchr(buff, '\n'))
 	{
 		sgnal = read(fd, temp, BUFFER_SIZE);
+		if (sgnal == -1)
+			return (NULL);
+
+		if (sgnal == 0)
+			break;
+		
 		temp[sgnal] = '\0';
+		printf("temp suan == %s\n",temp);
+
 		oldbuff = buff;
 		buff = ft_strjoin(buff,temp);
 		free(oldbuff);
@@ -38,16 +46,18 @@ static char	*ft_line(char *buff)
 	int i;
 	
 	i = 0;
-	while (buff[i] != '\n')
+	while (buff[i] && buff[i] != '\n')
 		i++;
 	theline = calloc(i + 2 , 1);
 	i = 0;
-	while (buff[i] != '\n')
+	while (buff[i] && buff[i] != '\n')
 	{
 		theline[i] = buff[i];
 		i++;
 	}
-	theline[i] = '\n';
+	if (buff[i] == '\n')
+		theline[i] = '\n';
+	theline[++i] = '\0';
 	return (theline);
 }
 
@@ -59,6 +69,8 @@ static char *ft_gonext(char *buff)
 
 	bj = buff;
 	buff  = ft_strchr(buff, '\n');
+	if (!buff)
+		return NULL;
 	buff++;
 	next  = calloc(ft_strlen(buff) + 1, 1);
 	while (buff[i])
@@ -73,8 +85,12 @@ char	*get_next_line(int fd)
 {
 	static char *buff;
 	char *myline;
-	buff = calloc(1,1);
+	if (!buff)
+		buff = calloc(1,1);
 	buff = ft_reader(fd,buff);
+	if (!buff)
+		return (NULL);
+	
 	myline = ft_line(buff);
 	buff = ft_gonext(buff);
 	return (myline);

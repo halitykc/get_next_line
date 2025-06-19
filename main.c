@@ -3,9 +3,14 @@
 
 int	main(void)
 {
-	int a = open("test.txt", O_RDONLY);
+	int a = open("test.txt", O_RDONLY | O_RDWR);
 
-	printf("%s", get_next_line(a));
-	printf("%s", get_next_line(a));
+	printf("-%s", get_next_line(a));
+	printf("-%s", get_next_line(a));
+	printf("-%s", get_next_line(a));
+	printf("-%s", get_next_line(a));
+	printf("-%s", get_next_line(a));
+
+
 
 }
