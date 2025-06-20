@@ -7,20 +7,5 @@ int	main(void)
 	char *sa = get_next_line(a);
 	printf("-%s",sa);
 	free(sa);
-	sa = get_next_line(a);
-	printf("-%s",sa);
-	free(sa);
-	sa = get_next_line(a);
-	printf("-%s",sa);
-	free(sa);
-	sa = get_next_line(a);
-	printf("-%s",sa);
-	free(sa);
-	sa = get_next_line(a);
-	printf("-%s",sa);
-	free(sa);
-
-
-
 
 }

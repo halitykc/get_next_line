@@ -12,6 +12,30 @@
 
 #include "get_next_line.h"
 
+static void	ft_bzero(void *str, size_t n)
+{
+	unsigned char	*p;
+	size_t			i;
+
+	p = (unsigned char *)str;
+	i = 0;
+	while (i < n)
+	{
+		p[i++] = 0;
+	}
+}
+
+void	*ft_calloc(size_t nmemb, size_t size)
+{
+	void	*ptr;
+
+	ptr = malloc(size * nmemb);
+	if (!ptr)
+		return (NULL);
+	ft_bzero(ptr, nmemb * size);
+	return (ptr);
+}
+
 char	*ft_strchr(const char *str, int c)
 {
 	while (*str)
