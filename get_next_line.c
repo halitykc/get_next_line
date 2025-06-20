@@ -84,15 +84,23 @@ static char *ft_gonext(char *buff)
 char	*get_next_line(int fd)
 {
 	static char *buff;
-	char *myline;
+	char *nextline;
+
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
 	if (!buff)
 		buff = calloc(1,1);
 	buff = ft_reader(fd,buff);
-	if (!buff)
+	if (!buff || !*buff)
+	{
+		free(buff);
+		buff = NULL;
 		return (NULL);
-	myline = ft_line(buff);
+	}
+	nextline = ft_line(buff);
 	buff = ft_gonext(buff);
-	return (myline);
+	
+	return (nextline);
 }
 
 // static char
