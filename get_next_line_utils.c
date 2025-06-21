@@ -6,33 +6,25 @@
 /*   By: hyakici <hyakici@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 20:27:16 by hyakici           #+#    #+#             */
-/*   Updated: 2025/06/21 15:03:49 by hyakici          ###   ########.fr       */
+/*   Updated: 2025/06/21 15:12:58 by hyakici          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static void	ft_bzero(void *str, size_t n)
-{
-	unsigned char	*p;
-	size_t			i;
-
-	p = (unsigned char *)str;
-	i = 0;
-	while (i < n)
-	{
-		p[i++] = 0;
-	}
-}
-
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	void	*ptr;
+	void			*ptr;
+	unsigned char	*p;
+	size_t			i;
 
 	ptr = malloc(size * nmemb);
 	if (!ptr)
 		return (NULL);
-	ft_bzero(ptr, nmemb * size);
+	p = (unsigned char *)ptr;
+	i = 0;
+	while (i < nmemb * size)
+		p[i++] = 0;
 	return (ptr);
 }
 
