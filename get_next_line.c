@@ -6,7 +6,7 @@
 /*   By: hyakici <hyakici@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 13:23:42 by hyakici           #+#    #+#             */
-/*   Updated: 2025/06/21 15:04:59 by hyakici          ###   ########.fr       */
+/*   Updated: 2025/06/23 12:24:24 by hyakici          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ static char	*ft_gonext(char *buff)
 	if (!buff)
 		return (free(oldbuf), NULL);
 	buff++;
+	if (!*buff)
+		return (free(oldbuf), NULL);
 	next = ft_calloc(ft_strlen(buff) + 1, 1);
 	if (!next)
 		return (free(oldbuf), NULL);

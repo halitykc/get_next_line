@@ -6,10 +6,9 @@
 /*   By: hyakici <hyakici@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 16:10:22 by hyakici           #+#    #+#             */
-/*   Updated: 2025/06/21 16:12:29 by hyakici          ###   ########.fr       */
+/*   Updated: 2025/06/23 12:41:22 by hyakici          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef GET_NEXT_LINE_BONUS_H
 # define GET_NEXT_LINE_BONUS_H
